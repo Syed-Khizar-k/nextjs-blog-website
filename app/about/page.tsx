@@ -1,31 +1,36 @@
-import React from 'react';
+import React from "react";
 
 const About: React.FC = () => {
-    return (
-        <div className="bg-gray-100">
-            <header className="bg-gray-800 text-white py-5 text-center">
-                <h1 className="text-3xl">About Us</h1>
-            </header>
-            <main className="p-5">
-                <section className="bg-white shadow-md rounded-lg p-5 mb-5">
-                    <h2 className="text-xl text-gray-800">Our Mission</h2>
-                    <p className="text-gray-600">We strive to provide the best services to our customers.</p>
-                </section>
-                <section className="bg-white shadow-md rounded-lg p-5 mb-5">
-                    <h2 className="text-xl text-gray-800">Our Team</h2>
-                    <p className="text-gray-600">Meet our dedicated team of professionals.</p>
-                </section>
-                <section className="bg-white shadow-md rounded-lg p-5 mb-5">
-                    <h2 className="text-xl text-gray-800">Contact Us</h2>
-                    <p className="text-gray-600">Feel free to reach out to us for any inquiries.</p>
-                    
-                </section>
-            </main>
-            <footer className="bg-gray-800 text-white text-center py-3">
-                <p>&copy; 2023 Your Company Name</p>
-            </footer>
+  return (
+    <>
+      <section className="container mx-auto px-4 py-10 text-center">
+        <h1 className="text-4xl font-bold  ">About Blogifiers</h1>
+        <p className="mt-4 text-lg ">
+          Welcome to our programming blog where we share insights, tutorials,
+          and resources to help you advance your skills.
+        </p>
+      </section>
+
+      <section className="container mx-auto px-4 py-10">
+        <h2 className="text-3xl font-bold text-center ">Our Projects</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          {Array.from({ length: 6 }).map((_, index) => (
+            <div
+              key={index}
+              className="p-4 border rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+              <div className="h-70  animate-pulse rounded-lg bg-[url('https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-center"></div>
+              <h3 className="mt-4 text-xl font-semibold ">
+                Project Title {index + 1}
+              </h3>
+              <p className="mt-2 ">
+                Brief description of the project goes here.
+              </p>
+            </div>
+          ))}
         </div>
-    );
+      </section>
+    </>
+  );
 };
 
 export default About;

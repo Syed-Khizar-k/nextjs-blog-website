@@ -1,65 +1,47 @@
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
+import fs from "fs";
+import matter from "gray-matter";
+interface blogdata {
+  title?: string;
+  description?: string;
+  slug?: string;
+  date?: string;
+  author?: string;
+  image?: string;
+}
 
-const blogs = [
-  {
-    title: "Understanding React",
-    description: "A deep dive into the React library.",
-    slug: "understanding-react",
-    date: "2023-10-01",
-    author: "John Doe",
-    image:
-      "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=600",
-  },
-  {
-    title: "Next.js for Beginners",
-    description: "Getting started with Next.js.",
-    slug: "nextjs-for-beginners",
-    date: "2023-10-05",
-    author: "Jane Smith",
-    image:
-      "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=600",
-  },
-  {
-    title: "Understanding React",
-    description: "A deep dive into the React library.",
-    slug: "understanding-react",
-    date: "2023-10-01",
-    author: "John Doe",
-    image:
-      "https://images.pexels.com/photos/6804613/pexels-photo-6804613.jpeg?auto=compress&cs=tinysrgb&w=600",
-  },
-  {
-    title: "Next.js for Beginners",
-    description: "Getting started with Next.js.",
-    slug: "nextjs-for-beginners",
-    date: "2023-10-05",
-    author: "Jane Smith",
-    image:
-      "https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?auto=compress&cs=tinysrgb&w=600",
-  },
-  // Add more blog objects as needed
-];
+const dirContent = fs.readdirSync("content", "utf-8");
+const blogs = dirContent.map((file) => {
+  const fileContent = fs.readFileSync(`content/${file}`, "utf-8");
+  const data = matter(fileContent);
+  return {
+    ...data.data,
+    slug: file.replace(/\.md$/, ""),
+    content: data.content,
+  };
+});
 
 const BlogPage = () => {
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Blog</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">Our Blog Posts</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {blogs.map((blog) => (
-          <div
-            key={blog.slug}
-            className=" rounded-lg shadow-md overflow-hidden">
+        {blogs.map((blog: blogdata) => (
+          <div key={blog.slug} className="rounded-lg shadow-md overflow-hidden">
             <img
               src={blog.image}
               alt={blog.title}
               className="w-full h-74 object-cover"
             />
             <div className="p-4">
-              <h2 className="text-xl font-semibold">{blog.title}</h2>
+              <Link href={`/blogpost/${blog.slug}`}>
+                <h2 className="text-2xl font-bold">{blog.title}</h2>
+              </Link>
               <p className="">{blog.description}</p>
-              <p className=" text-sm">
-                By {blog.author} on{" "}
+              <p className="text-sm pb-4 ">
+                By
+                <span className="font-extrabold"> {blog.author}</span> |{" "}
                 <span className="font-extrabold">{blog.date}</span>
               </p>
               <Link

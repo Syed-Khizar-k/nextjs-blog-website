@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <nav className="flex justify-between items-center p-4 container mx-auto border-b bg-background/50 backdrop-blur sticky top-0 ">
       <Link href="/" className="text-xl font-bold">
-        MyLogo
+        Blogifiers
       </Link>
 
       <ul className="hidden md:flex space-x-10 items-center">
@@ -39,7 +39,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link href="/blog" className="hover:text-gray-500">
-            Blog
+            Our Blogs
           </Link>
         </li>
         <li>
@@ -78,7 +78,7 @@ const Navbar = () => {
                     <Link href="/contact">Contact</Link>
                   </li>
                   <li>
-                    <Link href="/blog">Blog</Link>
+                    <Link href="/blog">Our Blogs</Link>
                   </li>
                   <li>
                     <div className="flex items-center">
