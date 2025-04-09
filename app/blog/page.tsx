@@ -35,7 +35,7 @@ const BlogPage = () => {
               className="w-full h-74 object-cover"
             />
             <div className="p-4">
-              <Link href={`/blogpost/${blog.slug}`}>
+              <Link href={`/blog/${blog.slug}`}>
                 <h2 className="text-2xl font-bold">{blog.title}</h2>
               </Link>
               <p className="">{blog.description}</p>
@@ -45,7 +45,7 @@ const BlogPage = () => {
                 <span className="font-extrabold">{blog.date}</span>
               </p>
               <Link
-                href={`/blogpost/${blog.slug}`}
+                href={`/blog/${blog.slug}`}
                 className={buttonVariants({ variant: "outline" })}>
                 Read more
               </Link>
