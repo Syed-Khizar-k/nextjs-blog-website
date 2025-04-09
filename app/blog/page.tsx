@@ -15,7 +15,7 @@ interface BlogData {
 }
 
 async function getBlogs(): Promise<BlogData[]> {
-  const contentDir = path.join(process.cwd(), "public", "content");
+  const contentDir = path.join(process.cwd(), "content");
   const files = fs.readdirSync(contentDir);
 
   const blogs: BlogData[] = files

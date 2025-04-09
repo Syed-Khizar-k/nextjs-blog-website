@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import matter from "gray-matter";
 import rehypeFormat from "rehype-format";
 import rehypeStringify from "rehype-stringify";
@@ -12,29 +14,41 @@ interface BlogMetadata {
   date: string;
 }
 
+interface BlogPageProps {
+  blog: BlogMetadata;
+  content: string;
+}
+
+// Fetch the available slugs for dynamic routing
+export async function generateStaticParams() {
+  const contentDir = path.join(process.cwd(), "content");
+  const files = fs.readdirSync(contentDir);
+
+  return files.map((file) => ({
+    slug: file.replace(/\.md$/, ""),
+  }));
+}
+
 export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params;
 
-  // 👇 Fetch markdown file from public folder
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/content/${slug}.md`
-  );
+  // Fetch the markdown file content
+  const filePath = path.join(process.cwd(), "content", `${slug}.md`);
+  let fileContent = "";
 
-  if (!res.ok) {
-    return (
-      <div className="text-red-500 text-center mt-10">Blog not found.</div>
-    );
+  try {
+    fileContent = fs.readFileSync(filePath, "utf-8");
+  } catch (error) {
+    return <div className="text-red-500 text-center mt-10">Blog not found.</div>;
   }
 
-  const fileContent = await res.text();
-
-  // Parse frontmatter
+  // Parse the frontmatter and content
   const { data: blog, content } = matter(fileContent) as unknown as {
     data: BlogMetadata;
     content: string;
   };
 
-  // Process markdown to HTML
+  // Process markdown content to HTML
   const processor = unified()
     .use(remarkParse)
     .use(remarkRehype)
