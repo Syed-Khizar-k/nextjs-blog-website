@@ -24,7 +24,7 @@ export default async function Page({
 
   const filePath = `content/${slug}.md`;
   const fileContent = fs.readFileSync(filePath, "utf-8");
-  const { data: blog, content } = matter(fileContent) as {
+  const { data: blog, content } = matter(fileContent) as unknown as {
     data: BlogMetadata;
     content: string;
   };
