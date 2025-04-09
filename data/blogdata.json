@@ -1,0 +1,52 @@
+{
+  "blogs": [
+    {
+      "id": 1,
+      "image": "/webdev.jpg",
+      "title": "10 Tips for Better Web Design",
+      "slug": "10-tips-for-better-web-design",
+      "description": "Dive into the better experience of webdevelopment",
+      "author": "Syed khizar",
+      "date": "2025-04-01",
+
+      "para": "Web design is more than just aesthetics. These 10 tips will help you create cleaner, user-friendly websites.",
+      "tags": ["web design", "UX", "UI", "tips"]
+    },
+    {
+      "id": 2,
+      "image": "/react.jpg",
+      "title": "Why React is the Future of Frontend",
+      "slug": "why-react-is-the-future-of-frontend",
+      "description": "Dive into the future of FrontEnd web development",
+      "author": "Syed khizar",
+      "date": "2025-04-8",
+
+      "para": "React's component-based architecture makes it the preferred choice for scalable front-end development in 2025 and beyond.",
+      "tags": ["React", "JavaScript", "frontend", "web development"]
+    },
+    {
+      "id": 3,
+      "image": "seo.jpg",
+      "title": "Mastering SEO in 2025",
+      "slug": "mastering-seo-in-2025",
+      "description": "Master the Main Topics of SEO",
+      "author": "Usama",
+      "date": "2025-04-05",
+
+      "para": "Staying ahead in SEO requires adapting to constant algorithm updates. Here's how to dominate Google rankings in 2025.",
+      "tags": ["SEO", "marketing", "Google", "rankings"]
+    },
+    {
+      "id": 4,
+      "image": "nextjs.jpg",
+      "title": "Beginner's Guide to Next.js",
+      "slug": "beginners-guide-to-nextjs",
+      "description": "A Beginier friendly guide for basics understanding",
+      "author": "Syed khizar",
+      "date": "2025-02-28",
+
+      "para": "Next.js simplifies React development with server-side rendering and routing. This guide helps beginners get started quickly.",
+      "tags": ["Next.js", "React", "guide", "SSR"]
+    }
+  ]
+}
