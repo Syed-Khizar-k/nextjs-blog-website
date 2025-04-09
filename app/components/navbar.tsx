@@ -47,7 +47,7 @@ const Navbar = () => {
             <Button variant="outline" className="mx-1">
               Login
             </Button>
-            <Button variant="outline" className="mx-1">
+            <Button variant="outline" className="mx-1" >
               SignUp
             </Button>
             <ThemeButton />

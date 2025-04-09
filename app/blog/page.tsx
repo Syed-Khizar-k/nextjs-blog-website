@@ -3,7 +3,7 @@
 // import matter from "gray-matter";
 
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import React from "react";
 import blogsdata from "@/data/blogdata.json";
 
@@ -33,10 +33,8 @@ const BlogPage = () => {
                 By <span className="font-extrabold">{blog.author}</span> |{" "}
                 <span className="font-extrabold">{blog.date}</span>
               </p>
-              <Link
-                href={`/blog/${blog.slug}`}
-                className={buttonVariants({ variant: "outline" })}>
-                Read more
+              <Link href={`/blog/${blog.slug}`}>
+                <Button className="text-white">Read more</Button>
               </Link>
             </div>
           </div>
