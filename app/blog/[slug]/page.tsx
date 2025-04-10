@@ -1,14 +1,16 @@
 import blogdata from "@/data/blogdata.json";
 
 const blogarray = blogdata.blogs;
-interface paramInside {
+
+interface Params {
   slug: string;
 }
-interface paramFull {
-  params: paramInside;
+interface ParamProps {
+  params: Params;
 }
-const BlogPost = ({ params }: paramFull) => {
-  const { slug } = params;
+
+const BlogPost = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
 
   const filterData = slug ? blogarray.filter((blog) => slug === blog.slug) : [];
 
