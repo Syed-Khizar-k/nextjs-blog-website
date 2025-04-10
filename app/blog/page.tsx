@@ -3,11 +3,16 @@
 // import matter from "gray-matter";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import React from "react";
 import blogsdata from "@/data/blogdata.json";
 
 const blogs = blogsdata.blogs;
+export const metadata = {
+  title: "Blog Page - Blogifiers",
+  description: "this is the blog pages",
+};
 const BlogPage = () => {
   return (
     <div className="container mx-auto p-4">
@@ -16,12 +21,15 @@ const BlogPage = () => {
         {blogs.map((blog) => (
           <div key={blog.id} className="rounded-lg shadow-md overflow-hidden">
             {blog.image && (
-              <img
+              <Image
                 src={blog.image}
                 alt={blog.title}
-                className="w-full h-64 object-cover"
+                className="object-cover h-[40vh]"
+                width={500}
+                height={100}
               />
             )}
+
             <div className="p-4">
               <Link href={`/blog/${blog.slug}`}>
                 <h2 className="text-2xl font-bold hover:underline">

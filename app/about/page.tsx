@@ -1,5 +1,10 @@
 import React from "react";
 
+export const metadata = {
+  title: "About - Blogifiers",
+  description: "this is the About page",
+};
+
 const About: React.FC = () => {
   return (
     <>

@@ -1,19 +1,21 @@
 import blogdata from "@/data/blogdata.json";
+import { notFound } from "next/navigation";
 
 const blogarray = blogdata.blogs;
 
-interface Params {
-  slug: string;
-}
-interface ParamProps {
-  params: Params;
-}
+export const metadata = {
+  title: "Blog Post - Blogifiers",
+  description: "this is the blog pages",
+};
 
 const BlogPost = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
 
   const filterData = slug ? blogarray.filter((blog) => slug === blog.slug) : [];
 
+  if (filterData.length === 0) {
+    notFound();
+  }
   return filterData.map((blog) => {
     return (
       <div className="max-w-4xl mx-auto p-6 rounded-lg shadow-lg" key={blog.id}>

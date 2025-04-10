@@ -1,8 +1,19 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+//for font optimization
+import { Roboto } from "next/font/google";
+
 import "./globals.css";
 import Navbar from "./components/navbar";
 import { ThemeProvider } from "./components/theme-provider";
+import type { Metadata } from "next";
+
+const roboto = Roboto({
+  weight: "400",
+  subsets: ["latin"],
+});
+export const metadata: Metadata = {
+  title: "blogifiers",
+  description: "description",
+};
 
 export default function RootLayout({
   children,
@@ -11,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={` antialiased`}>
+      <body className={roboto.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
